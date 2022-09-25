@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RegistrarUsuario">
+    <LinearLayout
+        android:layout_width="310dp"
+        android:layout_height="461dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="150dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="150dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" >
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="165dp">
+
+                    <ImageView
+                        android:id="@+id/imageView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        tools:srcCompat="@drawable/avatar_registro" />
+
+                    <TextView
+                        android:id="@+id/tv_Registrarse"
+                        android:layout_width="match_parent"
+                        android:layout_height="42dp"
+                        android:layout_gravity="center"
+                        android:text="@string/tv_Registrarse"
+                        android:textAlignment="center"
+                        android:textColor="#3F51B5"
+                        android:textSize="24sp" />
+
+                </TableRow>
+
+                <EditText
+                    android:id="@+id/et_Nombre"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="@string/et_Nombre"
+                    android:inputType="textPersonName" />
+
+                <EditText
+                    android:id="@+id/et_Correo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="@string/et_Correo"
+                    android:inputType="textEmailAddress" />
+
+                <EditText
+                    android:id="@+id/et_Contrasenia"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="@string/et_Contrasena"
+                    android:inputType="textPassword" />
+
+                <EditText
+                    android:id="@+id/et_RepetirContrasenia"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="@string/et_RepetirContrasena"
+                    android:inputType="textPassword" />
+
+                <Button
+                    android:id="@+id/btn_Registrar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#DCDCDC"
+                    android:onClick="Agregar"
+                    android:text="@string/btn_Registrar" />
+
+            </LinearLayout>
+        </ScrollView>
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

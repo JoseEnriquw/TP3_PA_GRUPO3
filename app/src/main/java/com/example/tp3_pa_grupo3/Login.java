@@ -20,7 +20,7 @@ public class Login extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         tv_Registrarse = (TextView)findViewById(R.id.tv_Registrarse);
         tv_Registrarse.setOnClickListener(v -> {
-            Intent i = new Intent(getApplicationContext(),MainActivity.class);
+            Intent i = new Intent(getApplicationContext(),RegistrarUsuario.class);
             startActivity(i);
         });
     }
