@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Login">
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="vertical"
+                android:paddingLeft="20sp"
+                android:paddingRight="20sp">
+
+                <TextView
+                    android:id="@+id/tv_Bienvenido"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/tv_Bienvenido"
+                    android:textAlignment="center"
+                    android:textColor="#2196F3"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:id="@+id/tv_IniciarSesion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="12sp"
+                    android:layout_marginBottom="12sp"
+                    android:text="@string/tv_IniciarSesion"
+                    android:textAlignment="center"
+                    android:textSize="18sp" />
+
+                <ImageView
+                    android:id="@+id/img_Auto"
+                    android:layout_width="130dp"
+                    android:layout_height="130dp"
+                    android:layout_gravity="center"
+                    android:baselineAlignBottom="false"
+                    android:contentDescription="@string/img_Auto"
+                    app:srcCompat="@drawable/auto" />
+
+                <EditText
+                    android:id="@+id/et_Usuario"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="10sp"
+                    android:layout_marginBottom="10sp"
+                    android:ems="10"
+                    android:hint="@string/et_Usuario"
+                    android:inputType="textPersonName" />
+
+                <EditText
+                    android:id="@+id/et_Password"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:ems="10"
+                    android:hint="@string/et_Password"
+                    android:inputType="textPassword" />
+
+                <Button
+                    android:id="@+id/button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="12sp"
+                    android:backgroundTint="#D5D5D5"
+                    android:onClick="Btn_Login"
+                    android:text="@string/btn_Login"
+                    android:textColor="#000000" />
+
+                <TextView
+                    android:id="@+id/tv_Registrarse"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10sp"
+                    android:autoLink="all"
+                    android:linksClickable="false"
+                    android:text="@string/lnk_Registrarse"
+                    android:textAlignment="center"
+                    android:textColor="#4F92C6" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
