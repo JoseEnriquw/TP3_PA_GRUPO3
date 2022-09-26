@@ -13,7 +13,7 @@ import Util.UtilsSQL;
 
 public class SQLite_OpenHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "BASE_DE_DATOS2.db";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
     private static final String TABLE_NAME = "Usuarios";
     private static final String COLUMN_ID = "ID";
     private static final String COLUMN_NAME = "Nombre";
