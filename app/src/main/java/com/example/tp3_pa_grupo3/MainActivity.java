@@ -3,6 +3,7 @@ package com.example.tp3_pa_grupo3;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Menu;
+import android.widget.TextView;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
@@ -47,6 +48,14 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+
+        Usuarios usuario=(Usuarios)getIntent().getSerializableExtra("usuario");
+
+        NavigationView navigationHeader = (NavigationView) findViewById(R.id.nav_view);
+        //con esto generamos el usuario en el header del menu-------------------------------
+        View hView = navigationView.getHeaderView(0);
+        ((TextView) hView.findViewById(R.id.tvUserMail)).setText(usuario.getCorreo());
+        ((TextView) hView.findViewById(R.id.tvUserName)).setText(usuario.getNombre());
     }
 
     @Override

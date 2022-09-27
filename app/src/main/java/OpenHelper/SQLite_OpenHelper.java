@@ -101,13 +101,19 @@ public class SQLite_OpenHelper extends SQLiteOpenHelper {
     }
 
     // VALIDAR LOGIN
-    public boolean ValidarLogin(Usuarios usuario){
+    public Usuarios ValidarLogin(Usuarios usuario){
         Cursor cursor = null;
+        Usuarios user=null;
         cursor = this.getReadableDatabase().rawQuery(UtilsSQL.QUERY_LOGIN, new String[]{usuario.getCorreo(),usuario.getContrasenia()});
         if (cursor.moveToFirst())
-            return true;
-        else
-            return false;
+        {
+            user= new Usuarios();
+            user.setNombre(cursor.getString(0));
+            user.setCorreo(cursor.getString(1));
+        }
+        cursor.close();
+
+        return user;
     }
 
     public boolean  existeRegistro(String query,String[] args)

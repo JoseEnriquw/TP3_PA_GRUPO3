@@ -1,6 +1,8 @@
 package com.example.tp3_pa_grupo3;
 
-public class Usuarios {
+import java.io.Serializable;
+
+public class Usuarios implements Serializable {
     private int ID;
     private String Nombre;
     private String Correo;
