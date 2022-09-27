@@ -34,7 +34,7 @@ public class RegistrarUsuario extends AppCompatActivity {
 
             dao=new SQLite_OpenHelper(this);
             if (!isUsuarioExiste(usuario)) {
-                dao.insert(usuario);
+                dao.insertUsuario(usuario);
 
                 Toast.makeText(this, "Usuario agregado con exito", Toast.LENGTH_LONG).show();
 

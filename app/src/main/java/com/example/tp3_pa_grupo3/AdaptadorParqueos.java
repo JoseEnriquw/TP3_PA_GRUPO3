@@ -9,19 +9,31 @@ import android.widget.TextView;
 
 import java.util.List;
 
-import OpenHelper.SQLite_Helper_Parqueo;
+import OpenHelper.SQLite_OpenHelper;
 
 public class AdaptadorParqueos extends BaseAdapter {
     private Context context;
     private List<EParqueos> par ;
-    private SQLite_Helper_Parqueo sql;
+    private SQLite_OpenHelper sql;
 
     public AdaptadorParqueos(Context context) {
         this.context = context;
-        sql = new SQLite_Helper_Parqueo(context);
+        sql = new SQLite_OpenHelper(context);
         try {
 
-            par = sql.selectAll();
+            par = sql.selectAllParqueo();
+        } catch (Exception ex) {
+            par= null;
+
+        }
+    }
+
+    @Override
+    public void notifyDataSetChanged() {
+        super.notifyDataSetChanged();
+        try {
+
+            par = sql.selectAllParqueo();
         } catch (Exception ex) {
             par= null;
 

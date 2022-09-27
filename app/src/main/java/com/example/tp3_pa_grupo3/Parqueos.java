@@ -14,7 +14,7 @@ import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import OpenHelper.SQLite_Helper_Parqueo;
+import OpenHelper.SQLite_OpenHelper;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -26,7 +26,7 @@ public class Parqueos extends Fragment implements  DialogoAgregarParquimetro.Get
     TextView matri;
     private GridView gridView;
     private AdaptadorParqueos adaptador;
-    private SQLite_Helper_Parqueo sql ;
+    private SQLite_OpenHelper sql ;
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -83,9 +83,9 @@ public class Parqueos extends Fragment implements  DialogoAgregarParquimetro.Get
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        sql=new SQLite_Helper_Parqueo(this.getActivity());
         FloatingActionButton boton =view.findViewById(R.id.fab);
         contexto = this.getContext();
+        sql=new SQLite_OpenHelper(contexto);
         boton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -103,7 +103,7 @@ public class Parqueos extends Fragment implements  DialogoAgregarParquimetro.Get
     @Override
     public void Resultado(String matricula, String tiempo) {
         EParqueos par = new EParqueos(matricula, tiempo);
-
-        sql.insert(par);
+        sql.insertParqueo(par);
+        adaptador.notifyDataSetChanged();
     }
 }
