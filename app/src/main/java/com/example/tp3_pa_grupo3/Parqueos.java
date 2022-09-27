@@ -102,6 +102,7 @@ public class Parqueos extends Fragment implements  DialogoAgregarParquimetro.Get
 
     @Override
     public void Resultado(String matricula, String tiempo) {
+
         EParqueos par = new EParqueos(matricula, tiempo);
         sql.insertParqueo(par);
         adaptador.notifyDataSetChanged();

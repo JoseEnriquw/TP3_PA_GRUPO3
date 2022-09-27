@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.Window;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class DialogoAgregarParquimetro {
 
@@ -34,8 +35,14 @@ public class DialogoAgregarParquimetro {
             public void onClick(View v) {
                 String matricula = ((EditText) dialogo.findViewById(R.id.txt_matricula)).getText().toString();
                 String tiempo = ((EditText) dialogo.findViewById(R.id.txt_tiempo)).getText().toString();
-                interfaz.Resultado(matricula, tiempo);
-                dialogo.dismiss();
+                if(!matricula.isEmpty() && !tiempo.isEmpty()) {
+                    interfaz.Resultado(matricula, tiempo);
+                    dialogo.dismiss();
+                }else {
+                    Toast.makeText(contexto,"Completa los campos", Toast.LENGTH_LONG);
+
+                }
+
             }
         });
 
