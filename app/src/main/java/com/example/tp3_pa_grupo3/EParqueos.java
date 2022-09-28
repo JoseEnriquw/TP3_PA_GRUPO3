@@ -6,10 +6,19 @@ public class EParqueos {
     Integer id;
     String matricula;
     String tiempo;
+    Usuarios usuario;
 
     public EParqueos(String matricula, String tiempo) {
         this.matricula = matricula;
         this.tiempo = tiempo;
+    }
+
+    public Usuarios getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuarios usuario) {
+        this.usuario = usuario;
     }
 
     public EParqueos() {

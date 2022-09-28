@@ -15,13 +15,22 @@ public class AdaptadorParqueos extends BaseAdapter {
     private Context context;
     private List<EParqueos> par ;
     private SQLite_OpenHelper sql;
+    private String usuario;
+
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
+    }
 
     public AdaptadorParqueos(Context context) {
         this.context = context;
         sql = new SQLite_OpenHelper(context);
         try {
 
-            par = sql.selectAllParqueo();
+            par = sql.selectAllParqueo(usuario);
         } catch (Exception ex) {
             par= null;
 
@@ -33,7 +42,7 @@ public class AdaptadorParqueos extends BaseAdapter {
         super.notifyDataSetChanged();
         try {
 
-            par = sql.selectAllParqueo();
+            par = sql.selectAllParqueo(usuario);
         } catch (Exception ex) {
             par= null;
 

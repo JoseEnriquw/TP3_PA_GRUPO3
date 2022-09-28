@@ -29,15 +29,22 @@ public class Login extends AppCompatActivity {
 
         String correo = String.valueOf(((EditText)findViewById(R.id.et_Usuario)).getText());
         String contrasenia = String.valueOf(((EditText)findViewById(R.id.et_Password)).getText());
-        Usuarios us = new Usuarios(correo,contrasenia);
-        if ((us=bd.ValidarLogin(us))!=null){
-            Intent i = new Intent(getApplicationContext(),MainActivity.class);
-            i.putExtra("usuario",us);
-            startActivity(i);
+
+        if(correo.isEmpty() || contrasenia.isEmpty()){
+            Toast.makeText(this,"Debe completar todos los campos",Toast.LENGTH_LONG).show();
+        }else{
+            Usuarios us = new Usuarios(correo,contrasenia);
+            if ((us=bd.ValidarLogin(us))!=null){
+                Intent i = new Intent(getApplicationContext(),MainActivity.class);
+                i.putExtra("usuario",us);
+                startActivity(i);
+            }
+            else{
+                Toast.makeText(this,"Usuario o contraseña incorrectos",Toast.LENGTH_LONG).show();
+            }
         }
-        else{
-            Toast.makeText(this,"Usuario o contraseña incorrectos",Toast.LENGTH_LONG).show();
-        }
+
+
 
     }
 

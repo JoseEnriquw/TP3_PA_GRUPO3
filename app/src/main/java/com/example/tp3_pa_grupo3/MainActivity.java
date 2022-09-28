@@ -21,6 +21,15 @@ public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
+    private String ID_USUARIO;
+    private Usuarios usuario;
+
+    public Usuarios getUsuario() {
+        return usuario;
+    }
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,13 +58,15 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
-        Usuarios usuario=(Usuarios)getIntent().getSerializableExtra("usuario");
-
+        usuario=(Usuarios)getIntent().getSerializableExtra("usuario");
         NavigationView navigationHeader = (NavigationView) findViewById(R.id.nav_view);
         //con esto generamos el usuario en el header del menu-------------------------------
         View hView = navigationView.getHeaderView(0);
+
         ((TextView) hView.findViewById(R.id.tvUserMail)).setText(usuario.getCorreo());
         ((TextView) hView.findViewById(R.id.tvUserName)).setText(usuario.getNombre());
+
+
     }
 
     @Override

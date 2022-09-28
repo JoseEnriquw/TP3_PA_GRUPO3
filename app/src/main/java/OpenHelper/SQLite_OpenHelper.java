@@ -19,6 +19,7 @@ public class SQLite_OpenHelper extends SQLiteOpenHelper {
     private static final String TABLE_NAME_USUARIO = "Usuarios";
     private static final String TABLE_NAME_PARQUEO = "PARQUEO";
     private static final String COLUMN_ID = "ID";
+    private static final String COLUMN_ID_USUARIO = "ID_USUARIO";
     private static final String COLUMN_NAME = "Nombre";
     private static final String COLUMN_EMAIL = "Correo";
     private static final String COLUMN_PASSWORD = "Contrasenia";
@@ -39,9 +40,11 @@ public class SQLite_OpenHelper extends SQLiteOpenHelper {
                 ");";
         db.execSQL(query);
         query = "CREATE TABLE " + TABLE_NAME_PARQUEO + " (" +
-                COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT , " +
+                COLUMN_ID_USUARIO + " INTEGER, "+
                 COLUMN_MATRICULA + " TEXT, " +
-                COLUMN_TIEMPO + " TEXT);";
+                COLUMN_TIEMPO + " TEXT," +
+                "FOREIGN KEY ("+COLUMN_ID_USUARIO+") REFERENCES " +TABLE_NAME_USUARIO+"("+COLUMN_ID+") )";
         db.execSQL(query);
     }
 
@@ -108,8 +111,9 @@ public class SQLite_OpenHelper extends SQLiteOpenHelper {
         if (cursor.moveToFirst())
         {
             user= new Usuarios();
-            user.setNombre(cursor.getString(0));
-            user.setCorreo(cursor.getString(1));
+            user.setID(cursor.getInt(0));
+            user.setNombre(cursor.getString(1));
+            user.setCorreo(cursor.getString(2));
         }
         cursor.close();
 
@@ -131,14 +135,15 @@ public class SQLite_OpenHelper extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(COLUMN_MATRICULA, parqueo.getMatricula());
         values.put(COLUMN_TIEMPO, parqueo.getTiempo());
+        values.put(COLUMN_ID_USUARIO, parqueo.getUsuario().getID());
         database.insert(TABLE_NAME_PARQUEO, null, values);
         database.close();
     }
 
-    public List<EParqueos> selectAllParqueo() {
+    public List<EParqueos> selectAllParqueo(String IDUsuario) {
         List<EParqueos> parqueos = new ArrayList<>();
         SQLiteDatabase database = this.getReadableDatabase();
-        Cursor cursor = database.rawQuery(UtilsSQL.SELECT_ALL_PARQUEO,null);
+        Cursor cursor = database.rawQuery(UtilsSQL.SELECT_ALL_PARQUEO, new String[] {IDUsuario},null);
         if (cursor.moveToFirst()) {
             do {
                 EParqueos parqueo = new EParqueos();

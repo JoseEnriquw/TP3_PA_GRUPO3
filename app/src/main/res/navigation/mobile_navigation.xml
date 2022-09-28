@@ -32,4 +32,9 @@
         android:name="com.example.tp3_pa_grupo3.MiCuenta"
         android:label="Mi cuenta"
         tools:layout="@layout/fragment_mi_cuenta" />
+    <activity
+        android:id="@+id/login"
+        android:name="com.example.tp3_pa_grupo3.Login"
+        android:label="activity_login"
+        tools:layout="@layout/activity_login" />
 </navigation>

@@ -13,6 +13,7 @@ import android.widget.GridView;
 import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.navigation.NavigationView;
 
 import OpenHelper.SQLite_OpenHelper;
 
@@ -27,6 +28,8 @@ public class Parqueos extends Fragment implements  DialogoAgregarParquimetro.Get
     private GridView gridView;
     private AdaptadorParqueos adaptador;
     private SQLite_OpenHelper sql ;
+    String ID_USUARIO;
+    Usuarios usu;
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -75,6 +78,8 @@ public class Parqueos extends Fragment implements  DialogoAgregarParquimetro.Get
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        MainActivity activity =(MainActivity) getActivity();
+        usu= activity.getUsuario();
 
         return inflater.inflate(R.layout.fragment_parqueos, container, false);
 
@@ -93,9 +98,13 @@ public class Parqueos extends Fragment implements  DialogoAgregarParquimetro.Get
 
             }
         });
+
+
         gridView = (GridView)view.findViewById(R.id.gv_parqueos);
         adaptador = new AdaptadorParqueos(this.getActivity());
+        adaptador.setUsuario(String.valueOf(usu.getID()));
         gridView.setAdapter(adaptador);
+        adaptador.notifyDataSetChanged();
 
 
     }
@@ -104,6 +113,7 @@ public class Parqueos extends Fragment implements  DialogoAgregarParquimetro.Get
     public void Resultado(String matricula, String tiempo) {
 
         EParqueos par = new EParqueos(matricula, tiempo);
+        par.setUsuario(usu);
         sql.insertParqueo(par);
         adaptador.notifyDataSetChanged();
     }
