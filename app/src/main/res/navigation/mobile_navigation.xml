@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.example.tp3_pa_grupo3.ui.home.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/nav_gallery"
+        android:name="com.example.tp3_pa_grupo3.ui.gallery.GalleryFragment"
+        android:label="@string/menu_gallery"
+        tools:layout="@layout/fragment_gallery" />
+
+    <fragment
+        android:id="@+id/nav_slideshow"
+        android:name="com.example.tp3_pa_grupo3.ui.slideshow.SlideshowFragment"
+        android:label="@string/menu_slideshow"
+        tools:layout="@layout/fragment_slideshow" />
+    <fragment
+        android:id="@+id/parqueos"
+        android:name="com.example.tp3_pa_grupo3.Parqueos"
+        android:label="Parqueos"
+        tools:layout="@layout/fragment_parqueos" />
+    <fragment
+        android:id="@+id/miCuenta"
+        android:name="com.example.tp3_pa_grupo3.MiCuenta"
+        android:label="Mi cuenta"
+        tools:layout="@layout/fragment_mi_cuenta" />
+    <activity
+        android:id="@+id/login"
+        android:name="com.example.tp3_pa_grupo3.Login"
+        android:label="activity_login"
+        tools:layout="@layout/activity_login" />
+</navigation>

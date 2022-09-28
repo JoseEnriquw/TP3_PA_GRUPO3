@@ -22,19 +22,26 @@ public class RegistrarUsuario extends AppCompatActivity {
         setContentView(R.layout.activity_registrar_usuario);
     }
     public void Agregar(View view)
-    {
+    {   String Nombre =((EditText)findViewById(R.id.et_Nombre)).getText().toString();
+        String correo =((EditText)findViewById(R.id.et_Correo)).getText().toString();
         String repetirContrasenia =((EditText)findViewById(R.id.et_RepetirContrasenia)).getText().toString();
         String Contrasenia =((EditText)findViewById(R.id.et_Contrasenia)).getText().toString();
+
+        if(Nombre.isEmpty() || correo.isEmpty() || Contrasenia.isEmpty() ) {
+            Toast.makeText(this,"Completa los campos", Toast.LENGTH_LONG);
+            return;
+        }
+
         if(repetirContrasenia.equals(Contrasenia))
         {
             Usuarios usuario=new Usuarios();
-            usuario.setNombre(((EditText)findViewById(R.id.et_Nombre)).getText().toString());
-            usuario.setCorreo(((EditText)findViewById(R.id.et_Correo)).getText().toString());
+            usuario.setNombre(Nombre);
+            usuario.setCorreo(correo);
             usuario.setContrasenia(Contrasenia);
 
             dao=new SQLite_OpenHelper(this);
             if (!isUsuarioExiste(usuario)) {
-                dao.insert(usuario);
+                dao.insertUsuario(usuario);
 
                 Toast.makeText(this, "Usuario agregado con exito", Toast.LENGTH_LONG).show();
 
